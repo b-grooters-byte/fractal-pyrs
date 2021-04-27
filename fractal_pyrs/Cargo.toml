@@ -1,0 +1,23 @@
+[package]
+name = "fractal-pyrs"
+version = "0.1.0"
+authors = ["Brandon Grooters <brandon.grooters@bytetrail.com>"]
+edition = "2018"
+
+[lib]
+name="fractal_pyrs"
+crate-type=["cdylib"]
+
+[dependencies]
+fractal-rs={version="0.2.0", path="../../fractal-rs"}
+
+[dependencies.pyo3]
+version="0.13.2"
+features=["extension-module"]
+
+[target.x86_64-apple-darwin]
+rustflags = [
+  "-C", "link-arg=-undefined",
+  "-C", "link-arg=dynamic_lookup",
+]
+
